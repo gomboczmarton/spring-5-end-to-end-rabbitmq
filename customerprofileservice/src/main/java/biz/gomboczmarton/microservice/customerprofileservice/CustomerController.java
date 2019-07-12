@@ -12,8 +12,9 @@ public class CustomerController {
     @Autowired
     CustomerRegistrar customerRegistrar;
 
-    @RequestMapping( path="/register", method = RequestMethod.POST)
-    Mono<Customer> register(@RequestBody Customer customer){
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    Mono<Customer> register(@RequestBody Customer customer) {
+        System.out.println("New customer registration request with name: " + customer.getName() + " and email: " + customer.getEmail());
         return customerRegistrar.register(customer);
     }
 }
